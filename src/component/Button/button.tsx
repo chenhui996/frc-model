@@ -3,9 +3,11 @@ import './style.less';
 
 const Button: React.FC<any> = () => {
     return <>
-        <button className="frc-btn">
-            <div>123</div>
-        </button>
+        <div className="frc-btn">
+            <div>button</div>
+            <button>456</button>
+        </div>
+
     </>
 }
 

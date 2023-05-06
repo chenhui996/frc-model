@@ -1,7 +1,5 @@
 // rollup.config.js
-import babel from '@rollup/plugin-babel';
 import typescript from 'rollup-plugin-typescript2';
-
 import postcss from 'rollup-plugin-postcss';
 import postcssImport from 'postcss-import';
 import postcssNested from 'postcss-nested';
@@ -21,13 +19,10 @@ export default {
 				compilerOptions: {
 					declaration: true,
 					allowSyntheticDefaultImports: true,
-					jsx: "react"
+					jsx: "react",
+					// target: 'es5',
 				}
 			}
-		}),
-		babel({
-			babelHelpers: 'bundled',
-			exclude: 'node_modules/**' // 只编译我们的源代码
 		}),
 		postcss({
 			extract: true,
