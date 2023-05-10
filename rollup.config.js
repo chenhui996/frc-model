@@ -5,6 +5,8 @@ import postcssImport from 'postcss-import';
 import postcssNested from 'postcss-nested';
 import postcssPresetEnv from 'postcss-preset-env';
 
+import replace from '@rollup/plugin-replace';
+
 export default {
 	input: 'src/index.ts',
 	output: {
@@ -13,6 +15,13 @@ export default {
 		name: 'myBundle'
 	},
 	plugins: [
+		replace({
+			preventAssignment: true,
+			values: {
+				// 替换所有的 `this` 关键字为 `window`
+				this: 'window'
+			}
+		}),
 		typescript({
 			// 将 .d.ts 文件保存到指定目录
 			tsconfigOverride: {
@@ -35,4 +44,11 @@ export default {
 			]
 		})
 	],
+	onwarn(warning, warn) {
+		if (warning.code === 'UNRESOLVED_IMPORT') {
+			return;
+		} else {
+			warn(warning);
+		}
+	}
 };

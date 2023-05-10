@@ -1,2 +1,7 @@
-export { default as Button } from './component/Button/button';
-export { default as Input } from './component/Input/input';
+// component
+export {SelectComponent, TableTitle} from './component';
+export {default as ComponentMap} from './component';
+
+// compute
+export {frcFormulaSelect} from './compute';
+export {default as ComputeMap} from './compute';

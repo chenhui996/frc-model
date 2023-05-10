@@ -1,0 +1,53 @@
+.filter-item.label-search-map-select {
+  .item-row {
+    display: flex;
+    flex-flow: row wrap;
+    min-width: 0;
+
+    .item-label {
+      flex-grow: 0;
+      width: 72px;
+      height: 24px;
+      margin-right: 4px;
+      padding: 0 6px;
+      color: #097c6d;
+      font-weight: 700;
+      background-color: #20302f;
+    }
+  }
+}
+
+.initial-wrapper {
+  padding: 0 4px;
+
+  .frc-filter-item {
+    padding: 0 8px;
+  }
+}
+
+.ant-select-dropdown.frc-select.frc-tree-select-dropdown {
+  // width: 250px !important;
+
+  .frc-checkbox-group .ant-checkbox-wrapper {
+    align-items: flex-start;
+    vertical-align: top;
+  }
+
+  .frc-checkbox-group .ant-checkbox-wrapper .ant-checkbox {
+    top: 4px;
+  }
+}
+
+.varible-initial-t {
+  width: 0 !important;
+  min-width: 0 !important;
+  border: none !important;
+}
+
+.initial-tree-select.frc-select.ant-select {
+  .varible-initial-t;
+
+  &.ant-select-multiple.ant-select-focused {
+    .varible-initial-t;
+  }
+}
