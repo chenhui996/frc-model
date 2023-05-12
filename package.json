@@ -1,15 +1,26 @@
 {
   "name": "frc-model",
-  "version": "1.0.1",
-  "description": "",
+  "version": "1.0.3",
+  "description": "React components library - frc",
   "main": "dist/index.js",
   "type": "module",
   "scripts": {
-    "build": "rimraf ./dist && rollup -c"
+    "build": "rimraf ./dist && rollup -c",
+    "prepublishOnly": "npm run build"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "keywords": [
+    "Component",
+    "UI",
+    "React"
+  ],
+  "author": "chenhui996",
+  "private": false,
+  "license": "MIT",
+  "homepage": "https://github.com/chenhui996/frc-model",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/chenhui996/frc-model"
+  },
   "devDependencies": {
     "@ant-design/icons": "^4.7.0",
     "@babel/core": "^7.21.8",
