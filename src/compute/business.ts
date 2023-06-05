@@ -10,7 +10,6 @@ import {
 import moment from 'moment';
 import { SingleStepProps, NormalReturn, TagStepProps, TagStepSpecifiedProps } from '../type';
 import { deleteInvalid } from '../utils';
-import { tradeTypeMap } from '../const';
 
 /**
  * 对象型：“单字段”取值
@@ -498,6 +497,29 @@ const frcTrdPxNetChgColor: SingleStepProps = (record, config, step, relayValue) 
 };
 
 /**
+ * 判断计算 -> 买一价、卖一价文本颜色
+ */
+const frcBidOrAskColor: SingleStepProps = (record, config, step, relayValue, valueFields = []) => {
+  let result: string = '#FFEBC8';
+
+  const bidOrAskValue = record[valueFields[0]] || null;
+  const value: number | null = (relayValue as number) || null;
+
+  console.log(bidOrAskValue, value);
+  
+
+  if (Number(value) > Number(bidOrAskValue)) {
+    result = '#FF4333';
+  } else if (Number(value) < Number(bidOrAskValue)) {
+    result = '#00B563';
+  } else if (Number(value) === Number(bidOrAskValue)) {
+    result = '#FFEBC8';
+  }
+
+  return result;
+};
+
+/**
  * 判断计算 -> 估值偏离 bp 文本颜色
  */
 const frcValBpColor: SingleStepProps = (record, config, step, relayValue) => {
@@ -654,19 +676,6 @@ const frcNotWorkDealDate: SingleStepProps = (record, config, step, relayValue, v
   return result;
 };
 
-/**
- * 映射：交易方式 TradeType
- */
-const frcTradeTypeMap: SingleStepProps = (record, config, step, relayValue = null, valueFields = []) => {
-  let result: NormalReturn = step !== 0 ? relayValue : record[valueFields[0]] || null;
-
-  if (typeof result === 'number' && tradeTypeMap.get(result)) {
-    result = tradeTypeMap.get(result);
-  }
-
-  return result;
-};
-
 export {
   frcSingleField,
   frcPriceInvalid,
@@ -684,11 +693,11 @@ export {
   frcTradeMeth,
   frcShowAllWork,
   frcTrdPxNetChgColor,
+  frcBidOrAskColor,
   frcValBpColor,
   frcCdcOrCsiValue,
   frcJumpBondDetail,
   frcJumpIssuerDetail,
   frcCdcOrCsiAddPlusOrMinus,
-  frcNotWorkDealDate,
-  frcTradeTypeMap
+  frcNotWorkDealDate
 };

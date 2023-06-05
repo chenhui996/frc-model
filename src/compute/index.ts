@@ -15,13 +15,13 @@ import {
   frcTradeMeth,
   frcShowAllWork,
   frcTrdPxNetChgColor,
+  frcBidOrAskColor,
   frcValBpColor,
   frcCdcOrCsiValue,
   frcJumpBondDetail,
   frcJumpIssuerDetail,
   frcCdcOrCsiAddPlusOrMinus,
-  frcNotWorkDealDate,
-  frcTradeTypeMap
+  frcNotWorkDealDate
 } from './business';
 import {
   frcFormulaSelect,
@@ -54,6 +54,7 @@ const computes: [string, Function][] = [
   ['frcTradeMeth', frcTradeMeth],
   ['frcShowAllWork', frcShowAllWork],
   ['frcTrdPxNetChgColor', frcTrdPxNetChgColor],
+  ['frcBidOrAskColor', frcBidOrAskColor],
   ['frcValBpColor', frcValBpColor],
   ['frcCdcOrCsiValue', frcCdcOrCsiValue],
   ['frcConcatPercent', frcConcatPercent],
@@ -61,8 +62,7 @@ const computes: [string, Function][] = [
   ['frcJumpIssuerDetail', frcJumpIssuerDetail],
   ['frcCdcOrCsiAddPlusOrMinus', frcCdcOrCsiAddPlusOrMinus],
   ['frcNotWorkDealDate', frcNotWorkDealDate],
-  ['frcMathAbs', frcMathAbs],
-  ['frcTradeTypeMap', frcTradeTypeMap]
+  ['frcMathAbs', frcMathAbs]
 ];
 
 const ComponentMap = new Map(computes);
