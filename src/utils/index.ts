@@ -1,4 +1,9 @@
-import {omitBy, isNull, isUndefined, toPairs} from 'lodash';
+// import {omitBy, isNull, isUndefined, toPairs} from 'lodash';
+import omitBy from 'lodash/omitBy';
+import isNull from 'lodash/isNull';
+import isUndefined from 'lodash/isUndefined';
+import toPairs from 'lodash/toPairs';
+
 import {Dictionary, FilterNullUndef} from '../type';
 
 export const isNullOrUndefined = (value: any) => isNull(value) || isUndefined(value);

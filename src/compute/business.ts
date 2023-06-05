@@ -1,9 +1,6 @@
 /* eslint-disable no-lonely-if */
 /* eslint-disable no-console */
-import { isEqual } from 'lodash';
-// import {
-//   inQb, openNewBondDetail, openPage
-// } from '../const/qb-service/index';
+import isEqual from 'lodash/isEqual';
 import {
   inQb, openNewBondDetail, openPage
 } from 'frc-core-pro';
@@ -505,7 +502,7 @@ const frcBidOrAskColor: SingleStepProps = (record, config, step, relayValue, val
   const bidOrAskValue = record[valueFields[0]] || null;
   const value: number | null = (relayValue as number) || null;
 
-  console.log(bidOrAskValue, value);
+  // console.log(bidOrAskValue, value);
   if(!bidOrAskValue || !value){
     return result;
   }

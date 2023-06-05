@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {InputNumber, Button} from 'frc-ui-pro';
-import {castArray} from 'lodash';
+import castArray from 'lodash/castArray';
 import cn from 'classnames';
 import './style.less';
 
