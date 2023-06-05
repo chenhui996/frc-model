@@ -506,13 +506,16 @@ const frcBidOrAskColor: SingleStepProps = (record, config, step, relayValue, val
   const value: number | null = (relayValue as number) || null;
 
   // console.log(bidOrAskValue, value);
+  if(!bidOrAskValue || !value){
+    return result;
+  }
   
 
   if (Number(bidOrAskValue) > Number(value)) {
     result = '#FF4333';
   } else if (Number(bidOrAskValue) < Number(value)) {
     result = '#00B563';
-  } else if (Number(bidOrAskValue) < Number(value)) {
+  } else if (Number(bidOrAskValue) === Number(value)) {
     result = '#FFEBC8';
   }
 
