@@ -503,10 +503,10 @@ const frcBidOrAskColor: SingleStepProps = (record, config, step, relayValue, val
   const value: number | null = (relayValue as number) || null;
 
   // console.log(bidOrAskValue, value);
-  if(!bidOrAskValue || !value){
+  if (!bidOrAskValue || !value) {
     return result;
   }
-  
+
 
   if (Number(bidOrAskValue) > Number(value)) {
     result = '#FF4333';
@@ -665,12 +665,10 @@ const frcNotWorkDealDate: SingleStepProps = (record, config, step, relayValue, v
   const { time, date } = valueFields as { [key: string]: string };
   const today = moment(Date.now()).format('YYYY-MM-DD');
 
-  if (record[date] && record[time]) {
-    if (moment(record[date]).isSame(today, 'day')) {
-      result = record[time];
-    } else {
-      result = record[date];
-    }
+  if (record[date] && !moment(record[date]).isSame(today, 'day')) {
+    result = record[date];
+  } else {
+    result = record[time] || null;
   }
 
   return result;
