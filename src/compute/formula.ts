@@ -1,5 +1,5 @@
 import moment from 'moment';
-import {NormalReturn, SchemaConfigProps, SingleStepProps, SchemaCalculateStepsProps} from '../type';
+import { NormalReturn, SchemaConfigProps, SingleStepProps, SchemaCalculateStepsProps } from '../type';
 // import ComputeMap from '../compute';
 
 /**
@@ -13,12 +13,12 @@ const frcFormulaSelect = <T extends object, R>(
 ) => {
   let result: R | Function | null = null;
 
-  const {calculate} = config;
+  const { calculate } = config;
 
   calculate &&
     calculate[type] &&
     calculate[type].forEach((step: SchemaCalculateStepsProps, index: number) => {
-      const {callback, valueFields, attribute} = step;
+      const { callback, valueFields, attribute } = step;
 
       const stepCallBack = computeMap.get(callback); // search map item
 
@@ -32,7 +32,7 @@ const frcFormulaSelect = <T extends object, R>(
  * 日期格式化
  */
 const frcDateFormat: SingleStepProps = (record, config, step, relayValue = null, valueFields = []) => {
-  const {dateFormat} = config;
+  const { dateFormat } = config;
   let result: NormalReturn = step !== 0 ? relayValue : record[valueFields[0]] || null;
 
   // console.log(dateFormat, result);
@@ -48,8 +48,8 @@ const frcDateFormat: SingleStepProps = (record, config, step, relayValue = null,
  * 格式化：小数点
  */
 const frcToFixed: SingleStepProps = (record, config, step, relayValue = null, valueFields = [], attribute = {}) => {
-  const {toFixed: configToFixed} = config;
-  const {toFixed: attrToFixed} = attribute;
+  const { toFixed: configToFixed } = config;
+  const { toFixed: attrToFixed } = attribute;
   let result: NormalReturn = step !== 0 ? relayValue : record[valueFields[0]] || null;
 
   if (Number(result)) {
@@ -63,7 +63,7 @@ const frcToFixed: SingleStepProps = (record, config, step, relayValue = null, va
  * 格式化：除数
  */
 const frcDivisor: SingleStepProps = (record, config, step, relayValue = null, valueFields = [], attribute = {}) => {
-  const {divisor = 0} = attribute;
+  const { divisor = 0 } = attribute;
   let result: NormalReturn = step !== 0 ? relayValue : record[valueFields[0]] || null;
 
   if (step === 0 && valueFields.length !== 1) {
@@ -88,7 +88,7 @@ const frcEnsureToFixed: SingleStepProps = (
   valueFields = [],
   attribute = {}
 ) => {
-  const {ensureToFixed} = attribute;
+  const { ensureToFixed } = attribute;
   let result: number | string | null = step !== 0 ? relayValue : record[valueFields[0]] || null;
 
   if (typeof result === 'number') {
@@ -126,4 +126,4 @@ const frcMathAbs: SingleStepProps = (record, config, step, relayValue = null, va
   return result;
 };
 
-export {frcFormulaSelect, frcDateFormat, frcToFixed, frcEnsureToFixed, frcDivisor, frcConcatPercent, frcMathAbs};
+export { frcFormulaSelect, frcDateFormat, frcToFixed, frcEnsureToFixed, frcDivisor, frcConcatPercent, frcMathAbs };

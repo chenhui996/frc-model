@@ -600,17 +600,21 @@ const frcJumpBondDetail: SingleStepProps = (record, config, step, relayValue, va
  * 跳转 -> 发行人详情 issuer detail -> C Function
  */
 const frcJumpIssuerDetail: SingleStepProps = (record, config, step, relayValue, valueFields = {}) => {
+  console.log('open page in:');
   if (!valueFields || Object.keys(valueFields).length !== 3) {
     return null;
   }
 
   const { issuerCode, bondId, listedMarket } = valueFields as { [key: string]: string | number };
 
-  if (!record[issuerCode] && !record[bondId] && !record[listedMarket]) {
+  // console.log('open page params: ', record[issuerCode], record[bondId], record[listedMarket]);
+
+  if (!record[issuerCode] || !record[bondId] || !record[listedMarket]) {
     return null;
   }
 
   return () => {
+    console.log('open page params: ', record[issuerCode], record[bondId], record[listedMarket]);
     if (inQb()) {
       openPage({
         name: 'issuer_detail_web',
